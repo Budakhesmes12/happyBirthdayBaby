@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Dania</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom right, #ffe6f0, #ffd6ec);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .envelope-container {
+      position: relative;
+      width: 320px;
+      height: 220px;
+      perspective: 1000px;
+      cursor: pointer;
+      margin-top: 40px;
+    }
+
+    .envelope {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+    }
+
+    .envelope.open {
+      transform: rotateX(-180deg);
+    }
+
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .front {
+      background: #ffcce5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .back {
+      background: #fff0f5;
+      transform: rotateX(180deg);
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .note-title {
+      font-size: 22px;
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+
+    .message {
+      font-size: 14px;
+      color: #5c005c;
+      line-height: 1.6;
+    }
+
+    .heart {
+      font-size: 24px;
+      color: #ff66a3;
+      animation: float 2s ease-in-out infinite;
+      margin-top: 10px;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      background-color: #ffcce5;
+      color: #660033;
+      font-size: 14px;
+      border-top: 2px solid #ff99cc;
+      font-weight: bold;
+      width: 100%;
+      text-align: center;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="envelope-container" onclick="toggleEnvelope()">
+    <div class="envelope" id="envelope">
+      <div class="front">
+        💌 Tap to Open Letter from Hasif 😎
+      </div>
+      <div class="back">
+        <div class="note-title">🎉 Happy Birthday, Nur Qurratu Dania! 🎉</div>
+        <div class="message">
+          Dear Sayanggg! 💕<br><br>
+          You are a ray of sunshine, and today we celebrate the beautiful soul you are. <br>
+          May your day be filled with love, laughter, and joy. <br><br>
+          Keep shining, keep smiling, and never stop believing in yourself.<br>
+          The world is lucky to have you. 💖 I LOVE YOU BABY. - HASIF-
+        </div>
+        <div class="heart">❤️</div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="birthdaySong" autoplay loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function toggleEnvelope() {
+      const envelope = document.getElementById("envelope");
+      envelope.classList.toggle("open");
+    }
+
+    // Ensure music starts after first user interaction
+    document.body.addEventListener('click', function () {
+      const audio = document.getElementById('birthdaySong');
+      audio.volume = 0.5;
+      audio.play().catch(() => {
+        console.log("User interaction required to start audio.");
+      });
+    }, { once: true });
+  </script>
+
+  <footer>
+    Made with 💖 by Hasif — Cool & Kind 😊
+  </footer>
+
+</body>
+</html>
